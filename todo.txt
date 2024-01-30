@@ -1,0 +1,4 @@
+# Customer - addresses model - Profile model
+# Supplier - Open an Shop model
+Open an Shop - title- logo-addresses - balance
+Profile - profilePhoto-address1-address2-balance
