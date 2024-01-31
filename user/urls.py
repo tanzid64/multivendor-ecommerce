@@ -1,10 +1,15 @@
 from django.urls import path, include, re_path
-from .views import UserLoginView, GoogleLogin
+from rest_framework import routers
+from .views import GoogleLogin
 from allauth.account.views import ConfirmEmailView
-from .views import GoogleLogin, RedirectView
+from .views import GoogleLogin, RedirectView, UserAddressView
+
+router = routers.DefaultRouter()
+router.register('address', UserAddressView, basename='profile-address-api')
 
 urlpatterns = [
     path('', include('dj_rest_auth.urls')),
+    path('profile/', include(router.urls)),
     path('registration/', include('dj_rest_auth.registration.urls')),
     re_path('confirm-email/(?P<key>[-:\w]+)/$', ConfirmEmailView.as_view(),name='account_confirm_email'),
     path('login/google/', GoogleLogin.as_view(), name='google_login'),

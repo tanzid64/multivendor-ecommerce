@@ -12,15 +12,26 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Banner',
+            name='AuthorFollower',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
-                ('image', models.ImageField(upload_to='media/banner_img')),
-                ('title', models.CharField(max_length=255)),
-                ('slug', models.SlugField(unique=True)),
+            ],
+            options={
+                'abstract': False,
+            },
+        ),
+        migrations.CreateModel(
+            name='AuthorProfile',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('updated_at', models.DateTimeField(auto_now=True)),
+                ('bio', models.CharField(max_length=255)),
+                ('dob', models.DateField()),
                 ('description', models.TextField()),
+                ('is_verified', models.BooleanField(default=False)),
             ],
             options={
                 'abstract': False,

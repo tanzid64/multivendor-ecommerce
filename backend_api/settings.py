@@ -35,17 +35,18 @@ INSTALLED_APPS = [
     'dj_rest_auth.registration',
 
     'core',
-    'customer',
-    'supplier',
-    'product',
-    'category',
     'user',
+    'author',
+    'book',
+    'book_category',
 
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+
+    'django_countries',
 ]
 
 MIDDLEWARE = [
