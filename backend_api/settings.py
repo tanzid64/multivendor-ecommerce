@@ -22,6 +22,9 @@ AUTH_USER_MODEL = 'user.User'
 # Application definition
 
 INSTALLED_APPS = [
+    
+    'corsheaders',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,9 +51,12 @@ INSTALLED_APPS = [
 
     'django_countries',
 ]
+CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ORIGIN_ALLOW_ALL = True
 
 MIDDLEWARE = [
     # 'user.middleware.MoveJWTRefreshCookieIntoTheBody',
+    "corsheaders.middleware.CorsMiddleware",
     'allauth.account.middleware.AccountMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -164,9 +170,11 @@ EMAIL_USE_TLS = True
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
     'rest_framework.permissions.IsAuthenticated',
+    
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
+        
     ),
 }
 REST_AUTH = {
